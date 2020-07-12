@@ -1,0 +1,2 @@
+.current-forecast{display:grid;justify-items:center;align-content:center}.future-forecast{display:flex;justify-content:center;align-items:center;flex-wrap:wrap}.card{background-color:rgba(52,152,219,.363)}.form{width:40%}.degrees{color:#000;font-size:12px;position:relative;top:-8px}.city{font-size:1.5rem;margin-top:1rem}@media (max-width:500px){.form{width:80%}}
+/*# sourceMappingURL=main.e3e284d2.chunk.css.map */
