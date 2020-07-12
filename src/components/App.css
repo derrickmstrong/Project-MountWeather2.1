@@ -1,3 +1,5 @@
+
+
 .current-forecast {
   display: grid;
   justify-items: center;
@@ -11,8 +13,23 @@
   flex-wrap: wrap;
 }
 
+.card {
+  background-color: rgba(52, 152, 219, 0.363);
+}
 .form {
   width: 40%;
+}
+
+.degrees {
+  color: black;
+  font-size: 12px;
+  position: relative;
+  top: -8px;
+}
+
+.city {
+  font-size: 1.5rem;
+  margin-top: 1rem;
 }
 
 @media (max-width: 500px) {

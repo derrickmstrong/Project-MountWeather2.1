@@ -55,15 +55,13 @@ function App() {
 
   return (
     <Fragment>
-
       <div className='current-forecast my-4 mx-4'>
-
         <div class='input-group mb-3 form'>
           <input
             id='search-city'
             type='text'
             class='form-control text-center'
-            placeholder='Search by City'
+            placeholder='Search by US City'
           />
           <div class='input-group-append'>
             <button
@@ -78,13 +76,15 @@ function App() {
 
         {CITY && (
           <Fragment>
-            <h1>
-              {CITY.name ? `${CITY.name}, ${CITY.country}` : 'Opps! Try again'}
-            </h1>
             <Fragment>
               {LIST[0].main && (
                 <Fragment>
                   <div class='card m-3 text-center' style={{ width: '18rem' }}>
+                    <p className='city'>
+                      {CITY.name
+                        ? `${CITY.name}, ${CITY.country}`
+                        : 'Opps! Try again'}
+                    </p>
                     <img
                       src={`https://openweathermap.org/img/wn/${LIST[0].weather[0].icon}@2x.png`}
                       alt='icon'
@@ -93,32 +93,72 @@ function App() {
                     />
                     <div class='card-body text-center'>
                       <h5 class='card-title'>
-                        {LIST[0].main.temp.toFixed(0)} F
+                        {LIST[0].main.temp.toFixed(0)}{' '}
+                        <span
+                          className='degrees'
+                          role='img'
+                          aria-label='degrees'>
+                          o
+                        </span>{' '}
+                        F
                       </h5>
                       <p class='card-text'>
-                        {LIST[0].weather[0].description.toUpperCase()[0]}
-                        {LIST[0].weather[0].description.slice(1)}
+                        <strong>
+                          {LIST[0].weather[0].description.toUpperCase()[0]}
+                          {LIST[0].weather[0].description.slice(1)}
+                        </strong>
                       </p>
-                      <p>As of {time}</p>
+                      <p className='small'>As of {time}</p>
                     </div>
                     <ul class='list-group list-group-flush'>
                       <li class='list-group-item'>
-                        Feels like {LIST[0].main.feels_like.toFixed(0)} F
+                        {LIST[0].main.temp_max.toFixed(0)}/
+                        {LIST[0].main.temp_min.toFixed(0)} F 🌡️ Feels like{' '}
+                        {LIST[0].main.feels_like.toFixed(0)} F
                       </li>
                       <li class='list-group-item'>
-                        <span className='mr-2'>
-                          High: {LIST[0].main.temp_max.toFixed(0)} F
-                        </span>
-                        <span className='ml-2'>
-                          Low: {LIST[0].main.temp_min.toFixed(0)} F
+                        <span className=''>
+                          <p>Going out?</p>
+                          {LIST[0].main.temp.toFixed(0) >= 90
+                            ? 'Dress Light 👗🎽'
+                            : LIST[0].main.temp.toFixed(0) <= 89 &&
+                              LIST[0].main.temp.toFixed(0) >= 80
+                            ? 'Try Short Sleeves 👕'
+                            : LIST[0].main.temp.toFixed(0) <= 79 &&
+                              LIST[0].main.temp.toFixed(0) >= 70
+                            ? 'Long sleeves might work 👔'
+                            : LIST[0].main.temp.toFixed(0) <= 69 &&
+                              LIST[0].main.temp.toFixed(0) >= 60
+                            ? 'Bring a Jacket or a Kimono 👘'
+                            : LIST[0].main.temp.toFixed(0) <= 59 &&
+                              LIST[0].main.temp.toFixed(0) >= 50
+                            ? 'Try a Bigger Coat 🧥'
+                            : LIST[0].main.temp.toFixed(0) <= 49 &&
+                              LIST[0].main.temp.toFixed(0) >= 40
+                            ? 'Double UP, its Nippy 🌬️'
+                            : LIST[0].main.temp.toFixed(0) <= 39 &&
+                              LIST[0].main.temp.toFixed(0) >= 30
+                            ? 'Bring a Scarf 🧶'
+                            : LIST[0].main.temp.toFixed(0) <= 29 &&
+                              LIST[0].main.temp.toFixed(0) >= 20
+                            ? 'Really?!?! 🥶'
+                            : LIST[0].main.temp.toFixed(0) <= 19
+                            ? 'Just Stay Home 🏠!'
+                            : null}
                         </span>
                       </li>
                       <li class='list-group-item'>
-                        <span className='text-muted small mr-1'>
-                          Sunrise: {sunrise}
+                        <span className='small mr-1'>
+                          <span role='img' aria-label='sunrise'>
+                            🌅
+                          </span>{' '}
+                          Rise: {sunrise}
                         </span>
-                        <span className='text-muted small'>
-                          Sunset: {sunset}
+                        <span className='small'>
+                          <span role='img' aria-label='sunset'>
+                            🌇
+                          </span>{' '}
+                          Set: {sunset}
                         </span>
                       </li>
                     </ul>
@@ -128,10 +168,9 @@ function App() {
             </Fragment>
           </Fragment>
         )}
-
       </div>
 
-      <h2 className='future-forecast'>Extended Forecast</h2>
+      <h2 className='future-forecast'>24-hr Extended Forecast</h2>
       <div className='future-forecast'>
         {LIST &&
           numOfFutureForecasts.map((forecast) => {
@@ -180,12 +219,16 @@ function App() {
                           {LIST[forecast].main.temp.toFixed(0)} F
                         </h5>
                         <p class='card-text'>
-                          {LIST[forecast].weather[0].description.toUpperCase()[0]}
+                          {
+                            LIST[
+                              forecast
+                            ].weather[0].description.toUpperCase()[0]
+                          }
                           {LIST[forecast].weather[0].description.slice(1)}
                         </p>
                       </div>
                       <ul class='list-group list-group-flush'>
-                        <li class='list-group-item small'>
+                        <li class='list-group-item small mb-4'>
                           <p className='mr-2'>
                             High: {LIST[forecast].main.temp_max.toFixed(0)} F
                           </p>
@@ -201,7 +244,6 @@ function App() {
             );
           })}
       </div>
-
     </Fragment>
   );
 }
