@@ -82,7 +82,7 @@ function App() {
                   <div class='card m-3 text-center' style={{ width: '18rem' }}>
                     <p className='city'>
                       {CITY.name
-                        ? `${CITY.name}, ${CITY.country}`
+                        ? `${city}, ${CITY.country}`
                         : 'Opps! Try again'}
                     </p>
                     <img
