@@ -61,7 +61,7 @@ function App() {
             id='search-city'
             type='text'
             class='form-control text-center'
-            placeholder='Search by US City'
+            placeholder='Search ex. Birmingham, Alabama'
           />
           <div class='input-group-append'>
             <button
@@ -119,30 +119,30 @@ function App() {
                       <li class='list-group-item'>
                         <span className=''>
                           <p>Going out?</p>
-                          {LIST[0].main.temp.toFixed(0) >= 90
+                          {LIST[0].main.feels_like.toFixed(0) >= 90
                             ? 'Dress Light 👗🎽'
-                            : LIST[0].main.temp.toFixed(0) <= 89 &&
-                              LIST[0].main.temp.toFixed(0) >= 80
+                            : LIST[0].main.feels_like.toFixed(0) <= 89 &&
+                              LIST[0].main.feels_like.toFixed(0) >= 80
                             ? 'Try Short Sleeves 👕'
-                            : LIST[0].main.temp.toFixed(0) <= 79 &&
-                              LIST[0].main.temp.toFixed(0) >= 70
+                            : LIST[0].main.feels_like.toFixed(0) <= 79 &&
+                              LIST[0].main.feels_like.toFixed(0) >= 70
                             ? 'Long sleeves might work 👔'
-                            : LIST[0].main.temp.toFixed(0) <= 69 &&
-                              LIST[0].main.temp.toFixed(0) >= 60
+                            : LIST[0].main.feels_like.toFixed(0) <= 69 &&
+                              LIST[0].main.feels_like.toFixed(0) >= 60
                             ? 'Bring a Jacket or a Kimono 👘'
-                            : LIST[0].main.temp.toFixed(0) <= 59 &&
-                              LIST[0].main.temp.toFixed(0) >= 50
+                            : LIST[0].main.feels_like.toFixed(0) <= 59 &&
+                              LIST[0].main.feels_like.toFixed(0) >= 50
                             ? 'Try a Bigger Coat 🧥'
-                            : LIST[0].main.temp.toFixed(0) <= 49 &&
-                              LIST[0].main.temp.toFixed(0) >= 40
+                            : LIST[0].main.feels_like.toFixed(0) <= 49 &&
+                              LIST[0].main.feels_like.toFixed(0) >= 40
                             ? 'Double UP, its Nippy 🌬️'
-                            : LIST[0].main.temp.toFixed(0) <= 39 &&
-                              LIST[0].main.temp.toFixed(0) >= 30
+                            : LIST[0].main.feels_like.toFixed(0) <= 39 &&
+                              LIST[0].main.feels_like.toFixed(0) >= 30
                             ? 'Bring a Scarf 🧶'
-                            : LIST[0].main.temp.toFixed(0) <= 29 &&
-                              LIST[0].main.temp.toFixed(0) >= 20
+                            : LIST[0].main.feels_like.toFixed(0) <= 29 &&
+                              LIST[0].main.feels_like.toFixed(0) >= 20
                             ? 'Really?!?! 🥶'
-                            : LIST[0].main.temp.toFixed(0) <= 19
+                            : LIST[0].main.feels_like.toFixed(0) <= 19
                             ? 'Just Stay Home 🏠!'
                             : null}
                         </span>
